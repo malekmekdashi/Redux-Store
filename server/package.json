@@ -22,10 +22,7 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
-  },
-    "engines": {
-      "npm": "7.x"
-    }
+  }
   
   
 }
