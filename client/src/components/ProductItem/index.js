@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { pluralize } from "../../utils/helpers"
-import { useStoreContext } from "../../utils/GlobalState";
+import { useDispatch, useSelector } from "react-redux";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
 function ProductItem(item) {
-  const [state, dispatch] = useStoreContext();
+  // use 'useDispatch()' to access the redux dispatch function.
+  // useSelector() hook to access the redux store's state. This hook takes a selector function as an argument.
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
 
   const {
     image,

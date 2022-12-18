@@ -5,14 +5,17 @@ import { QUERY_CHECKOUT } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
-import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import './style.css';
+import { useDispatch, useSelector } from 'react-redux';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Cart = () => {
-  const [state, dispatch] = useStoreContext();
+  // use a custom Hook to establish a state variable and a dispatch function to update the state. We are using the dispatch function to on the TOGGLE_CART action. So we delete the 'useStoreContext' and replace it with 'useDispatch' and 'useSelector' from redux. // use 'useDispatch()' to access the redux dispatch function.
+  // useSelector() hook to access the redux store's state. This hook takes a selector function as an argument.
+  const dispatch = useDispatch();
+  const state = useSelector((store) => store);
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   useEffect(() => {

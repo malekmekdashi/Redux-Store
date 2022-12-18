@@ -1,11 +1,13 @@
 import React from 'react';
-import { useStoreContext } from "../../utils/GlobalState";
+import { useDispatch } from 'react-redux';
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
 const CartItem = ({ item }) => {
-
-  const [, dispatch] = useStoreContext();
+// use a custom Hook to establish a state variable and a dispatch function to update the state action. So we delete the 'useStoreContext' from the GlobalState and replaced it with 'useDispatch' from redux.
+// use 'useDispatch()' to access the redux dispatch function.
+// useSelector() hook to access the redux store's state. This hook takes a selector function as an argument.
+  const dispatch = useDispatch();
 
   const removeFromCart = item => {
     dispatch({
